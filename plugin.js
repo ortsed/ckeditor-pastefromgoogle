@@ -73,7 +73,11 @@ Copyright (c) 2013 Llewellyn Hinkes-Jones borrowed heavily from pastefromgoogle 
 					 && ( forceFromGoogle || ( /((strong|b) id="internal-source-marker(.*))/ ).test( googleHtml ) ) )
 				{
 					result = googleHtml.replace(/<(strong|b) id="internal-source-marker(.*?);"><span(.*?)>(.*)/gi, "$4");
-					result = result.replace(/<(?!\s*\/?\s*(p|a|b|i|em|ul)\b)[^>]*>/gi, "");
+					
+					if (!editor.config.keepCustomFormattingFromPaste){
+						// strip out all tags except basic formatting
+						result = result.replace(/<(font|span) (.*?)>/gi, "");
+					}
 					data[ 'html' ] = result;
 				}
 			}, this );
