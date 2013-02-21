@@ -10,6 +10,10 @@ To install:
  - Include "pastefromgoogle" in the list of extraPlugins in the cKeditor config
  - Include "PasteFromGoogle" in the list  of toolbar options in the cKeditor config.  Might look something like this:
 
+Optionally, set a "keepCustomFormattingFromPaste" setting in your config to True/False to determine whether font and span tags should be kept when pasting.  Default is False to strip out Google's default font styles.
+
+
+
 
 CKEDITOR.replace("id_content",{
     "filebrowserUploadUrl": "/ckeditor/upload/",
@@ -19,6 +23,7 @@ CKEDITOR.replace("id_content",{
     "fillEmptyBlocks": false,
     "skin": "kama",
     "filebrowserUploadPatternName": "ckeditor_upload",
+    "keepCustomFormattingFromPaste": False,
     "toolbar": [
         [
             "Source",
